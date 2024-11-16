@@ -1,6 +1,6 @@
 'use client'
 
-import { useAccount, useChainId } from 'wagmi'
+import { useAccount } from 'wagmi'
 import { config } from '@/app/config'
 
 /**

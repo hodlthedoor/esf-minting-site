@@ -4,11 +4,6 @@
 import { useEffect, useState } from "react";
 import {
   Address,
-  namehash,
-  hexToBigInt,
-  keccak256,
-  toBytes,
-  toHex,
 } from "viem";
 import {
   useWriteContract,

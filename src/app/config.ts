@@ -1,6 +1,6 @@
 // config/wagmi.ts
 import { http, createConfig } from 'wagmi'
-import { mainnet, sepolia } from 'wagmi/chains'
+import { mainnet } from 'wagmi/chains'
 import { injected, walletConnect } from 'wagmi/connectors'
 
 // Make sure to add your WalletConnect project ID in .env.local
