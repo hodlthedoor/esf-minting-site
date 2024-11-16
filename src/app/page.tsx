@@ -67,7 +67,7 @@ export default function Home() {
             <div className="relative z-20">
               <Search
                 onSearch={handleSearch}
-                placeholder="Search for your digijoint.eth subdomain"
+                placeholder="Search subdomain"
                 className="max-w-2xl mx-auto"
               />
             </div>
@@ -79,10 +79,7 @@ export default function Home() {
               <div className="bg-black/30 backdrop-blur-md rounded-xl shadow-lg shadow-cyan-500/20 border border-cyan-500/20 p-6 space-y-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-lg font-medium text-cyan-400">
-                      Domain Details
-                    </h3>
-                    <p className="text-sm text-cyan-400/70">
+                    <p className="text-md">
                       {searchResult.fullDomain}
                     </p>
                   </div>

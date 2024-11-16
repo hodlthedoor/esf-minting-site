@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import {
   Address,
+  formatEther,
 } from "viem";
 import {
   useWriteContract,
@@ -104,8 +105,19 @@ export function MintButton({
   const isDisabled =
     disabled || !searchResult || searchResult.exists || isLoading;
 
+  // Format price for display
+  const formattedPrice = formatEther(mintPrice);
+  const isPriceFree = mintPrice === BigInt(0);
+
   return (
     <div className="space-y-4">
+      {/* Price Display */}
+      {searchResult && !searchResult.exists && (
+        <div className="text-sm font-medium">
+          Price: {isPriceFree ? "Free" : `${formattedPrice} ETH`}
+        </div>
+      )}
+      
       <button
         onClick={handleMint}
         disabled={isDisabled}
