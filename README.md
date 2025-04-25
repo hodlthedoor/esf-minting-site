@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DigiJoint.ETH Subdomain Minter
+
+A web application for minting subdomains on the DigiJoint.eth ENS domain. This project allows users to check the availability of subdomains and mint them directly through a clean, modern interface.
+
+## Features
+
+- Check subdomain availability in real-time
+- Connect your wallet with MetaMask or WalletConnect
+- Mint available subdomains
+- Fallback functionality for RPC errors
+- ENS integration with name and avatar display
+
+## Tech Stack
+
+- **Frontend**: Next.js, React, TypeScript, TailwindCSS
+- **Blockchain**: Ethereum, ENS (Ethereum Name Service)
+- **Web3 Integration**: wagmi, viem
+- **Authentication**: WalletConnect, MetaMask
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- Yarn or npm
+- MetaMask or other Ethereum wallet
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/hodlthedoor/digijoint.git
+cd digijoint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn install
+# or
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Set up environment variables:
+   Create a `.env` file in the root directory with the following variables:
 
-## Learn More
+```bash
+# Required environment variables
+NEXT_PUBLIC_DOMAIN=digijoint.eth
+NEXT_PUBLIC_ESF_ADDRESS=0xDcbf49BDB92B2Aa84de4e428fd5b2C9C58412Bc5
+NEXT_PUBLIC_TLD_TOKEN_ADDRESS=0xbB326E4C0d505334Bb437E36c8A34d79a9B02073
+NEXT_PUBLIC_ETHERSCAN_URL=https://etherscan.io
+NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=your_walletconnect_project_id
+```
 
-To learn more about Next.js, take a look at the following resources:
+You can create a WalletConnect project ID at [WalletConnect Cloud](https://cloud.walletconnect.com/).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Run the development server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+yarn dev
+# or
+npm run dev
+```
 
-## Deploy on Vercel
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Connect your wallet using the "Connect Wallet" button
+2. Enter your desired subdomain in the search box
+3. If the domain is available, you'll see a green indicator
+4. Click the search button to mint the subdomain
+5. Approve the transaction in your wallet
+
+## Error Handling
+
+The application includes robust error handling:
+
+- If the RPC connection encounters issues during domain checks, the app will allow you to proceed with minting after 5 seconds
+- Network switching is supported if you're not on Ethereum mainnet
+- Clear error messages guide you through any issues
+
+## Deployment
+
+The app can be deployed on Vercel or any other Next.js compatible hosting:
+
+```bash
+yarn build
+yarn start
+```
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- [ENS (Ethereum Name Service)](https://ens.domains/)
+- [wagmi](https://wagmi.sh/) for React Hooks for Ethereum
+- [viem](https://viem.sh/) for Ethereum interaction
+- [TailwindCSS](https://tailwindcss.com/) for styling
