@@ -63,7 +63,7 @@ export function MintButton({
       const price = data[1] as bigint;
       const calculatedPrice =
         owner.toLowerCase() == address.toLowerCase() ? BigInt(0) : price;
-
+      console.log("calculatedPrice", calculatedPrice);
       setMintPrice(calculatedPrice);
     }
   }, [data, readError]);
@@ -104,6 +104,14 @@ export function MintButton({
   // Button states
   const isDisabled =
     disabled || !searchResult || searchResult.exists || isLoading;
+
+
+    useEffect(() => {
+      console.log("mintPrice", mintPrice);
+      console.log("searchResult", searchResult);
+      console.log("isDisabled", disabled);
+    console.log("isLoading", isLoading);
+  }, [mintPrice, searchResult, disabled, isLoading]);
 
   // Format price for display
   const formattedPrice = formatEther(mintPrice);
