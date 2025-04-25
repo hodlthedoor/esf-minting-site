@@ -6,7 +6,6 @@ import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useReadContract } from "wagmi";
 import { Address, zeroAddress, namehash } from "viem";
 import { abi } from "@/abis/esf";
-import { getLabelId } from "@/utils/ens";
 
 export interface SearchResult {
   term: string;
@@ -54,7 +53,7 @@ export function Search({
       clearTimeout(proceedTimeout);
       setProceedTimeout(null);
     }
-  }, [searchTerm]);
+  }, [searchTerm, proceedTimeout]);
 
   // Calculate the domain hash when the search term changes
   useEffect(() => {
@@ -153,8 +152,7 @@ export function Search({
     }
   };
 
-  // Get validation state - only consider domain valid if we have hash and no errors
-  const isSearching = !!debouncedTerm && isContractLoading;
+
   const isValidDomain =
     searchTerm !== "" && !isError && domainData !== undefined;
   const domainExists = isValidDomain && domainData !== BigInt(0);
